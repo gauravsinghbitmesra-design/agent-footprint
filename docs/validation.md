@@ -10,3 +10,5 @@ Initial local checks on 2026-11-01:
 The GitHub Actions workflow checks Python 3.10/3.12 on Linux, macOS and Windows, including package installation and CLI entrypoints. Consult the current run linked from the README badge for actual platform results. CI fixtures do not inspect any user's agent installation.
 
 Not established: exhaustive compatibility with all agent releases, all custom storage layouts, Windows process statistics, hostile-filesystem race protection on Windows, unique physical disk usage, complete helper-process attribution, safe cleanup decisions or any performance improvement caused by this tool.
+
+Release CI: [all six jobs passed](https://github.com/gauravsinghbitmesra-design/agent-footprint/actions/runs/41315407031) for commit `f27a23ca6bc93c1e11c90a55ff6ed79681ad6614`, with 44 tests (platform-specific skips where appropriate), package installation and CLI entrypoints on Python 3.10/3.12 across Linux, macOS and Windows.

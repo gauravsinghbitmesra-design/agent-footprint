@@ -18,4 +18,4 @@
 ## Chunk 3: verify and ship
 - [x] Review spec compliance and code quality, fix failures with regression tests.
 - [x] Run all tests, real read-only smoke and fresh installation; keep local report private. Review Git tracked files for identifiers/secrets.
-- [ ] Commit and publish public GitHub repository, relevant topics and profile feature. Verify remote and all CI platforms; fix any CI failures. (Publication checks tracked in GitHub Actions and final session result.)
+- [x] Commit and publish public GitHub repository, relevant topics and profile feature. Verify remote and all CI platforms; fix any CI failures. (Publication checks tracked in GitHub Actions and final session result.)
