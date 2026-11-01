@@ -4,7 +4,7 @@
 
 **Goal:** A dependency-free read-only coding-agent footprint report that users can run in one minute.
 **Architecture:** metadata collector -> versioned aggregate dictionary -> text/JSON/self-contained HTML renderers -> CLI. Separate process and Git inspectors. No raw local names in public reports.
-**Tech stack:** Python3.10 standard library, unittest, setuptools, GitHub Actions.
+**Tech stack:** Python 3.10 standard library, unittest, setuptools, GitHub Actions.
 
 ## Chunk 1: collectors
 - [x] Add failing filesystem tests with fixture categories, hardlinks, symlinks, special files, budgets, inaccessible values; implement collector and verify.

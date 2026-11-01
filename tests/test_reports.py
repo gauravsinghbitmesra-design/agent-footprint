@@ -75,6 +75,13 @@ class ReportTests(unittest.TestCase):
             self.assertNotEqual(p.returncode,0);self.assertEqual(path.read_text(),'keep')
             self.assertNotIn('Traceback',p.stderr)
 
+    def test_cli_stdout_is_utf8_even_with_legacy_locale(self):
+        import os
+        env=dict(os.environ, PYTHONIOENCODING='ascii')
+        p=subprocess.run([sys.executable,'run.py','--demo'],cwd=ROOT,env=env,capture_output=True)
+        self.assertEqual(p.returncode,0,p.stderr)
+        self.assertIn('Read-only · local',p.stdout.decode('utf-8'))
+
     def test_cli_rejects_invalid_budgets(self):
         for opts in (['--max-files','0'],['--timeout','-1'],['--timeout','nan'],['--timeout','inf']):
             p=subprocess.run([sys.executable,'run.py',*opts],cwd=ROOT,capture_output=True,text=True)

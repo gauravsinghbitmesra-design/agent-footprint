@@ -2,7 +2,7 @@
 
 Suggested post (replace the placeholder link only after publication):
 
-> I wanted to know what Claude Code and Codex were leaving on my laptop, so I built Agent Footprint. One local command shows supported disk categories and selected process stats. No API key, no uploads, no automatic deletion. Try the synthetic demo first, then inspect your own machine. MIT, Python3.10+, feedback welcome.
+> I wanted to know what Claude Code and Codex were leaving on my laptop, so I built Agent Footprint. One local command shows supported disk categories and selected process stats. No API key, no uploads, no automatic deletion. Try the synthetic demo first, then inspect your own machine. MIT, Python 3.10+, feedback welcome.
 >
 > https://github.com/gauravsinghbitmesra-design/agent-footprint
 >

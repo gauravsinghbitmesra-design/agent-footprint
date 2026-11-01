@@ -30,7 +30,7 @@ class BoundedProcessTests(unittest.TestCase):
     def test_huge_stderr_is_discarded(self):
         m=self.load()
         result=m.run_bounded([sys.executable,'-c',"import os;os.write(2,b'x'*2000000);print('ok')"],timeout=3,max_bytes=4096)
-        self.assertEqual(result.stdout,'ok\n');self.assertEqual(result.stderr,'')
+        self.assertEqual(result.stdout.splitlines(),['ok']);self.assertEqual(result.stderr,'')
 
     def test_timeout_kills_and_reaps_child(self):
         m=self.load();start=time.monotonic()

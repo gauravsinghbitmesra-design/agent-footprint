@@ -65,7 +65,7 @@ python3 run.py --demo --format html --output demo.local.html
 
 `--max-files` actually limits **visited entries, including directories**, across the whole disk scan. `--timeout` bounds disk traversal checks; process observation has a separate 3-second subprocess timeout, and optional Git queries share a 5-second budget. Slow filesystem calls can overrun traversal deadlines; this is not a hard wall-clock sandbox. Worktree checks accept at most 20 projects and count at most 100 distinct registrations, including main checkouts. No `git status`, fetch or tracked-file inspection is performed. Set explicit roots if your agent configuration uses custom locations; environment overrides are not automatically read.
 
-A partial or unavailable observation still exits 0 because the report was produced; inspect its coverage fields. Invalid arguments/output errors exit 2; interruption exits 130.
+Report files and standard output use UTF-8. A partial or unavailable observation still exits 0 because the report was produced; inspect its coverage fields. Invalid arguments/output errors exit 2; interruption exits 130.
 
 ## Optional installation
 

@@ -100,6 +100,22 @@ def collect_disk(claude_home: Path, codex_home: Path, max_files: int = 100000,
                             row['skipped_symlinks'] += 1
                             continue
                         if stat.S_ISREG(metadata.st_mode):
+                            # Windows DirEntry.stat can report an inode of 0
+                            # even though no-follow os.stat exposes the stable
+                            # file ID needed for cross-category hardlink dedup.
+                            if not metadata.st_ino:
+                                if SECURE_FDS:
+                                    metadata = os.stat(entry.name, dir_fd=location,
+                                                       follow_symlinks=False)
+                                else:
+                                    metadata = os.stat(entry.path, follow_symlinks=False)
+                                if _is_link(metadata):
+                                    row['skipped_symlinks'] += 1
+                                    continue
+                                if not stat.S_ISREG(metadata.st_mode) or not metadata.st_ino:
+                                    row['errors'] += 1
+                                    partial(row)
+                                    continue
                             add_file(row, metadata)
                         elif stat.S_ISDIR(metadata.st_mode):
                             if SECURE_FDS:
@@ -187,7 +203,7 @@ def collect_disk(claude_home: Path, codex_home: Path, max_files: int = 100000,
         'Only supported directories were inspected; other agent data may exist.',
         'Logical bytes and reported allocated blocks are different measurements.',
         'Allocated blocks are not unique physical storage or reclaimable space; filesystem clones and compression can differ.',
-        'Hardlinked files are counted once across categories; symlinks and special files are excluded.',
+        'Hardlinked files are counted once across categories; symlinks, special files and files without stable identities are excluded.',
         'No file contents were read. Age and file type do not establish safe deletion.',
     ]
     if not complete:

@@ -3,7 +3,7 @@
 For use on a person's laptop, follow PROMPT.md. This tool is read-only. Do not add deletion, process termination, background services, automatic uploads, telemetry or API-key requirements to this observation workflow.
 
 For development:
-- Python3.10+, standard library runtime; `python3 -m unittest discover -s tests -v`.
+- Python 3.10+, standard library runtime; `python3 -m unittest discover -s tests -v`.
 - Write regression tests before behavior changes. Preserve the versioned aggregate JSON schema or explicitly version incompatible changes.
 - File metadata only. Never open prompts, transcripts, credentials, environment dumps or tracked project contents. Never run git status or fetch. Explicit Git roots only.
 - No personal paths, filenames, project/branch names, process arguments or raw subprocess errors in output. Use fixed labels and aggregate counts. Review screenshots and examples: only synthetic data may be committed.

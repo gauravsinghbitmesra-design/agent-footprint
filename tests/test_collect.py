@@ -34,6 +34,33 @@ class DiskTests(unittest.TestCase):
             try:os.link(p,c/'debug'/'b')
             except OSError:self.skipTest('hardlinks unavailable')
             r=m.collect_disk(c,Path(tmp)/'x');self.assertEqual(r['totals']['logical_bytes'],5);self.assertEqual(r['totals']['files'],1)
+    def test_zero_direntry_inode_uses_nofollow_path_metadata_for_hardlinks(self):
+        m=self.load()
+        import contextlib
+        from types import SimpleNamespace
+        with tempfile.TemporaryDirectory() as tmp:
+            c=Path(tmp)/'c';(c/'projects').mkdir(parents=True);(c/'debug').mkdir()
+            original=c/'projects'/'a';original.write_bytes(b'12345')
+            try:os.link(original,c/'debug'/'b')
+            except OSError:self.skipTest('hardlinks unavailable')
+            real_scandir=m.os.scandir
+            class ZeroInodeEntry:
+                def __init__(self,entry):self.entry=entry
+                def __getattr__(self,name):return getattr(self.entry,name)
+                def stat(self,*,follow_symlinks):
+                    actual=self.entry.stat(follow_symlinks=follow_symlinks)
+                    values={name:getattr(actual,name) for name in ('st_mode','st_dev','st_size')}
+                    values['st_ino']=0
+                    if hasattr(actual,'st_blocks'):values['st_blocks']=actual.st_blocks
+                    return SimpleNamespace(**values)
+            @contextlib.contextmanager
+            def zero_inode_scandir(location):
+                with real_scandir(location) as entries:
+                    yield (ZeroInodeEntry(entry) for entry in entries)
+            with patch.object(m.os,'scandir',side_effect=zero_inode_scandir):
+                report=m.collect_disk(c,Path(tmp)/'x')
+            self.assertEqual(report['totals']['files'],1)
+            self.assertEqual(report['totals']['logical_bytes'],5)
     def test_symlink_files_directories_and_roots_are_skipped(self):
         m=self.load()
         with tempfile.TemporaryDirectory() as tmp:

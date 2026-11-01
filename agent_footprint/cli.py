@@ -54,6 +54,9 @@ def main(argv=None):
             write_output(args.output.expanduser(),output)
             print('Report saved to the requested new file. Review before sharing.',file=sys.stderr)
         else:
+            # Stable UTF-8 pipes on Windows and legacy terminal locales.
+            if hasattr(sys.stdout, 'reconfigure'):
+                sys.stdout.reconfigure(encoding='utf-8')
             sys.stdout.write(output)
         return 0
     except (OSError, ValueError) as error:
