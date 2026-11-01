@@ -1,0 +1,22 @@
+name: Bug or missing measurement
+description: Report a reproducible issue without raw private agent data.
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Platform and versions
+      description: OS, Python and agent version; omit usernames and paths.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: What happened?
+      description: Command flags (redacted), expected and actual behavior. Never include keys, raw transcripts, logs or private file paths.
+    validations:
+      required: true
+  - type: textarea
+    id: aggregate
+    attributes:
+      label: Reviewed aggregate evidence
+      description: Optional redacted report excerpt. Synthetic reproductions are preferred.

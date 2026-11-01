@@ -7,15 +7,15 @@
 **Tech stack:** Python3.10 standard library, unittest, setuptools, GitHub Actions.
 
 ## Chunk 1: collectors
-- [ ] Add failing filesystem tests with fixture categories, hardlinks, symlinks, special files, budgets, inaccessible values; implement collector and verify.
-- [ ] Add failing process tests for exact names/current user/no secret arguments; implement bounded ps observer, verify.
-- [ ] Add failing real temporary git/worktree tests (including spaces, dirty state); implement bounded Git observer without raw names, verify.
+- [x] Add failing filesystem tests with fixture categories, hardlinks, symlinks, special files, budgets, inaccessible values; implement collector and verify.
+- [x] Add failing process tests for exact names/current user/no secret arguments; implement bounded ps observer, verify.
+- [x] Add failing real temporary git/worktree tests (including spaces, registration counts); implement bounded Git registration observer without status/content reads or raw names, verify.
 
 ## Chunk 2: usable report
-- [ ] Add CLI/renderer tests for demo, formats, escaping, redaction, output permissions/refusal and invalid inputs; implement all formats and entrypoints.
-- [ ] Create pyproject, public docs/prompts/license, synthetic SVG preview, example JSON and CI. Verify links and installation from local source in fresh venv.
+- [x] Add CLI/renderer tests for demo, formats, escaping, redaction, output permissions/refusal and invalid inputs; implement all formats and entrypoints.
+- [x] Create pyproject, public docs/prompts/license, synthetic SVG preview, example JSON and CI. Verify links and installation from local source in fresh venv.
 
 ## Chunk 3: verify and ship
-- [ ] Review spec compliance and code quality, fix failures with regression tests.
-- [ ] Run all tests, real read-only smoke and fresh installation; keep local report private. Review Git tracked files for identifiers/secrets.
-- [ ] Commit and publish public GitHub repository, relevant topics and profile feature. Verify remote and all CI platforms; fix any CI failures.
+- [x] Review spec compliance and code quality, fix failures with regression tests.
+- [x] Run all tests, real read-only smoke and fresh installation; keep local report private. Review Git tracked files for identifiers/secrets.
+- [ ] Commit and publish public GitHub repository, relevant topics and profile feature. Verify remote and all CI platforms; fix any CI failures. (Publication checks tracked in GitHub Actions and final session result.)

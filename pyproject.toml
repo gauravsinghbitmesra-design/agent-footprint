@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-footprint"
+version = "0.1.0"
+description = "Read-only local disk and process footprint of Claude Code and Codex. No API key."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Gaurav Singh"}]
+keywords = ["claude-code", "codex", "disk-usage", "developer-tools", "ai-agents"]
+classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent", "Environment :: Console"]
+dependencies = []
+
+[project.scripts]
+agent-footprint = "agent_footprint.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gauravsinghbitmesra-design/agent-footprint"
+Issues = "https://github.com/gauravsinghbitmesra-design/agent-footprint/issues"
+
+[tool.setuptools.packages.find]
+include = ["agent_footprint*"]

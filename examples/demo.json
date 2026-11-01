@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "version": "0.1.0",
+  "demo": true,
+  "generated_at": "2026-11-01T00:00:00Z",
+  "disk": {
+    "categories": [
+      {
+        "agent": "Claude Code",
+        "category": "Session data",
+        "logical_bytes": 671088640,
+        "allocated_bytes": 679477248,
+        "files": 1200,
+        "status": "complete",
+        "skipped_symlinks": 0,
+        "errors": 0
+      },
+      {
+        "agent": "Claude Code",
+        "category": "Debug logs",
+        "logical_bytes": 188743680,
+        "allocated_bytes": 192937984,
+        "files": 420,
+        "status": "complete",
+        "skipped_symlinks": 0,
+        "errors": 0
+      },
+      {
+        "agent": "Codex",
+        "category": "Session data",
+        "logical_bytes": 440401920,
+        "allocated_bytes": 444596224,
+        "files": 800,
+        "status": "complete",
+        "skipped_symlinks": 0,
+        "errors": 0
+      },
+      {
+        "agent": "Codex",
+        "category": "Worktrees",
+        "logical_bytes": 838860800,
+        "allocated_bytes": 855638016,
+        "files": 3200,
+        "status": "complete",
+        "skipped_symlinks": 0,
+        "errors": 0
+      }
+    ],
+    "totals": {
+      "files": 5620,
+      "logical_bytes": 2139095040,
+      "allocated_bytes": 2172649472
+    },
+    "complete": true,
+    "limit_reached": false,
+    "notes": [
+      "Synthetic numbers; not measurements from a real laptop."
+    ]
+  },
+  "processes": {
+    "status": "available",
+    "items": [
+      {
+        "agent": "Claude Code",
+        "pid": 101,
+        "rss_bytes": 251658240,
+        "cpu_percent": 1.2
+      },
+      {
+        "agent": "Codex",
+        "pid": 102,
+        "rss_bytes": 167772160,
+        "cpu_percent": 0.3
+      }
+    ],
+    "total_rss_bytes": 419430400,
+    "notes": [
+      "Synthetic process snapshot."
+    ]
+  },
+  "worktrees": {
+    "status": "available",
+    "projects": 1,
+    "worktrees": 3,
+    "unavailable": 0,
+    "notes": [
+      "Registration counts only; no file status or cleanup eligibility inferred."
+    ]
+  },
+  "limitations": [
+    "Observed storage is not reclaimable space. Sessions and worktrees may contain valuable work.",
+    "Allocated bytes sum file blocks; compression and shared APFS copies can make this differ from unique physical storage.",
+    "Process attribution uses executable names, not authenticated ownership by an agent session. Generic runtimes and many helpers are excluded.",
+    "RSS is a process snapshot, not a RAM leak diagnosis; shared pages may be counted more than once.",
+    "Prompt, transcript, credential and project file contents are not read; environment values are not included in reports. No cleanup is performed."
+  ]
+}
